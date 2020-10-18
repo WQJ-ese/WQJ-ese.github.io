@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://aurora-wangq.github.io/</id>
     <title>Aurora</title>
-    <updated>2020-10-18T06:51:50.003Z</updated>
+    <updated>2020-10-18T07:12:12.070Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://aurora-wangq.github.io/"/>
     <link rel="self" href="https://aurora-wangq.github.io/atom.xml"/>
@@ -17,13 +17,13 @@
         </link>
         <updated>2020-10-18T03:42:22.000Z</updated>
         <content type="html"><![CDATA[<!-- more -->
-<p><strong>哈希</strong><br>
-思路 <strong><s>很简单</s></strong></p>
+<p>** 哈希 **<br>
+思路 ** <s>很简单</s> **</p>
 <blockquote>
-<p>**1.**以二维vector为容器，第一维下标存储哈希值，第二维下标存储此哈希值下原数字的个数，数组值存储原数字。<br>
-**2.**输入一个数，找其对应哈希值下的数组内有没有和它相同的数字，相当于缩小了枚举的范围，因为原值相同的数哈希值一定相同，而不同的数哈希值也是可能相同的，所以要同时存储哈希值和原值。<br>
-**3.**如果没有重复的输出，有重复的不输出。<br>
-**4.**注意，由于是多组询问，每次都要把vector清零。</p>
+<p>** 1. **以二维vector为容器，第一维下标存储哈希值，第二维下标存储此哈希值下原数字的个数，数组值存储原数字。<br>
+** 2. **输入一个数，找其对应哈希值下的数组内有没有和它相同的数字，相当于缩小了枚举的范围，因为原值相同的数哈希值一定相同，而不同的数哈希值也是可能相同的，所以要同时存储哈希值和原值。<br>
+** 3. **如果没有重复的输出，有重复的不输出。<br>
+** 4. **注意，由于是多组询问，每次都要把vector清零。</p>
 </blockquote>
 <pre><code class="language-cpp">#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
