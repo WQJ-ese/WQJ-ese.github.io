@@ -1,8 +1,8 @@
 <html>
   <head>
-  <meta charset="utf-8" />
+    <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>我的朋友们 | Aurora</title>
+<title>2020-10-17 | Aurora</title>
 <meta name="description" content="WQJ_POR" />
 <link rel="shortcut icon" href="https://aurora-wangq.github.io//favicon.ico">
 <link rel="stylesheet" href="https://aurora-wangq.github.io//styles/main.css">
@@ -14,11 +14,19 @@
 <script src="https://aurora-wangq.github.io//media/js/view-image.min.js"></script>
 <script src="https://aurora-wangq.github.io//media/js/jquery.magnific-popup.min.js"></script>
 <script src="https://aurora-wangq.github.io//media/js/functions.js"></script>
+    <meta name="referrer" content="never">
+    <meta name="description" content="
+###T1字符串哈希
+#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#define ul..." />
+    <meta name="keywords" content="哈希,每日总结" />
+    <script src="https://aurora-wangq.github.io//media/js/waterfall.min.js"></script>
+    <script src="https://aurora-wangq.github.io//media/js/prism.min.js"></script>
   </head>
   <body>
-    <!-- start: #wrapper -->
-    <div class="wrapper">
-      
             <header id="header" class="grid-container">
         <!-- start: .menu-wrapper -->
         <div class="menu-mobile"> 
@@ -85,24 +93,163 @@
         </div>
       </div>
 
-      <main id="friends" class="main fullcover no-sidebar content">
-        <div class="grid-container module-wrapper enable-masonry aos-init aos-animate" data-aos="fade-up">
+      <main id="single" class="main grid-container fullcover no-sidebar aos-init aos-animate" data-aos="fade">
+
+        <div class="center content">
+          <div class="featured-image cover" style="background-image: url('https://aurora-wangq.github.io//post-images/zi-fu-chuan-ha-xi.jpg');">
+            <div class="meta top"> 
+              <time class="meta-info" style="float:left;" datetime="2020-10-18"><i class="fa fa-calendar"></i><span class="lately">3 小时前</span></time>
+              
+              <a href="https://aurora-wangq.github.io/post/zi-fu-chuan-ha-xi/#comments" class="comments meta-info" title="">
+                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/zi-fu-chuan-ha-xi/"> </span>
+              </a>
+              <span id="/zi-fu-chuan-ha-xi/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
+              
+            </div>
+            <div class="info">
+              <div class="tags ">
+                
+                      <a href="https://aurora-wangq.github.io/tag/1GuW447lO/" class="ctag ctag-0 ctag-1GuW447lO" aria-label="">哈希</a>
+                    
+                      <a href="https://aurora-wangq.github.io/tag/0bBxAmKN_/" class="ctag ctag-1 ctag-0bBxAmKN_" aria-label="">每日总结</a>
+                    
+              </div>
+              <h1 class="title ularge white bold">2020-10-17</h1>
+            </div>
+          </div>
+        </div>  
+
         <div class="epcl-page-wrapper">
-          <div class="left-content grid-70 np-mobile widget_epcl_related_articles">
+          <div class="left-content grid-70 np-mobile">
+            <article class="main-article post">
+              <section class="post-content">
+                <div class="text">
+                  <!-- more -->
+<p>###T1<a href="https://www.luogu.com.cn/problem/P3370">字符串哈希</a></p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#define ull unsigned long long
+using namespace std;
 
-          <div class="widget_tag_cloud tagcloud">
-          
+ull base=131;
+ull a[10001];
+char s[10001];
+int n,ans=1;
+int prime=23333; 
+ull mod=1e9+7;
+
+ull hax(char s[])
+{
+
+ int len=strlen(s);
+ ull ans=0;
+ for (int i=0;i&lt;len;i++)
+ ans=(ans*base+(ull)s[i])%mod+prime;
+ return ans;
+}
+
+int main()
+{
+
+ scanf(&quot;%d&quot;,&amp;n);
+ for(int i=1;i&lt;=n;i++) {
+
+     scanf(&quot;%s&quot;,s);
+     a[i]=hax(s);
+}
+
+ sort(a+1,a+n+1);
+
+ for(int i=1;i&lt;n;i++) {
+
+     if(a[i]!=a[i+1])
+     ans++;
+ }
+
+ printf(&quot;%d&quot;,ans);
+ return 0;
+}
+</code></pre>
+<p>###T2<a href="http://csp.ac/problem/281">blocks</a></p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+
+int n;
+int a[100100];
+
+int main()
+{
+
+    scanf(&quot;%d&quot;,&amp;n);
+
+    int ans=-1;
+    for (int i = 1;i &lt;= n;i++) {
+
+        scanf(&quot;%d&quot;,&amp;a[i]);
+
+        if (i != 1)
+            ans=ans==-1?a[i-1]-a[i] : min(ans,a[i-1]-a[i]);    
+    }
+    printf(&quot;%d&quot;,ans);
+}
+</code></pre>
+
+                </div>
+                <div class="clear"></div>
+              </section>
+            </article>
+            <div class="clear"></div>
+
+            <section class="related section">
+              
+              <article class="prev grid-50 tablet-grid-50 grid-parent">
+                <div class="thumb cover lazy loaded" style="background-image: url('https://aurora-wangq.github.io//post-images/2020-10-15.jpg');"></div>
+                 <a href="https://aurora-wangq.github.io/post/2020-10-15/" class="full-link"></a>
+                 <div class="info">
+                  <time datetime="2020-10-18">2020-10-18</time>
+                  <h4 class="title white no-margin">2020-10-15</h4>
+                </div>
+                 <span class="epcl-button red">
+                  <img src="https://aurora-wangq.github.io//media/images/left-arrow.svg" width="15" alt="Left Arrow">
+                </span>
+                <div class="overlay"></div>
+              </article>
+              
+              
+              <article class="next grid-50 tablet-grid-50 grid-parent">
+                <div class="thumb cover lazy loaded" style="background-image: url('https://aurora-wangq.github.io//post-images/csp-s2-zhou-mo-shua-ti-ban-di-yi-chang.jpg');"></div>
+                 <a href="https://aurora-wangq.github.io/post/csp-s2-zhou-mo-shua-ti-ban-di-yi-chang/" class="full-link"></a>
+                 <div class="info">
+                  <time datetime="2020-10-17">2020-10-17</time>
+                  <h4 class="title white no-margin">CSP-S2周末刷题班（第一场）</h4>
+                </div>
+                 <span class="epcl-button red">
+                  <img src="https://aurora-wangq.github.io//media/images/right-arrow.svg" width="15" alt="Left Arrow">
+                </span>
+                <div class="overlay"></div>
+              </article>
+              
+
+                <div class="clear"></div>
+            </section>
+
+              <div class="clear"></div>
+              
             
-          
-          </div>
-        </div>
+              <div id="comments" class="bg-white hosted ">
+                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+              </div>
+              <div class="clear"></div>
+            
 
-        </div>
+            </div>
           </div>
-        </div>
       </main>
 
-        <footer id="footer" class="grid-container">
+          <footer id="footer" class="grid-container">
         <div class="widgets row gradient-effect">
             <div class="default-sidebar border-effect">
               <div class="grid-33 tablet-grid-50 mobile-grid-100">
@@ -244,6 +391,9 @@
     <div class="clear"></div>
 
         
+
+      
+    <script src="https://aurora-wangq.github.io//media/js/functions-post.js"></script>
 
     </div>
     <!-- end: #wrapper -->

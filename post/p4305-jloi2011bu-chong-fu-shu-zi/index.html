@@ -1,8 +1,8 @@
 <html>
   <head>
-  <meta charset="utf-8" />
+    <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>我的朋友们 | Aurora</title>
+<title>P4305 [JLOI2011]不重复数字 | Aurora</title>
 <meta name="description" content="WQJ_POR" />
 <link rel="shortcut icon" href="https://aurora-wangq.github.io//favicon.ico">
 <link rel="stylesheet" href="https://aurora-wangq.github.io//styles/main.css">
@@ -14,11 +14,18 @@
 <script src="https://aurora-wangq.github.io//media/js/view-image.min.js"></script>
 <script src="https://aurora-wangq.github.io//media/js/jquery.magnific-popup.min.js"></script>
 <script src="https://aurora-wangq.github.io//media/js/functions.js"></script>
+    <meta name="referrer" content="never">
+    <meta name="description" content="
+哈希
+思路 很简单
+
+**1.**以二维vector为容器，第一维下标存储哈希值，第二维下标存储此哈希值下原数字的个数，数组值存储原数字。
+**2.**输入一个数，找其对应哈希值下的数组内有没有和它相同的数字，相当于缩小了枚举的范围，因为..." />
+    <meta name="keywords" content="哈希" />
+    <script src="https://aurora-wangq.github.io//media/js/waterfall.min.js"></script>
+    <script src="https://aurora-wangq.github.io//media/js/prism.min.js"></script>
   </head>
   <body>
-    <!-- start: #wrapper -->
-    <div class="wrapper">
-      
             <header id="header" class="grid-container">
         <!-- start: .menu-wrapper -->
         <div class="menu-mobile"> 
@@ -85,24 +92,144 @@
         </div>
       </div>
 
-      <main id="friends" class="main fullcover no-sidebar content">
-        <div class="grid-container module-wrapper enable-masonry aos-init aos-animate" data-aos="fade-up">
+      <main id="single" class="main grid-container fullcover no-sidebar aos-init aos-animate" data-aos="fade">
+
+        <div class="center content">
+          <div class="featured-image cover" style="background-image: url('https://aurora-wangq.github.io//post-images/p4305-jloi2011bu-chong-fu-shu-zi.jpg');">
+            <div class="meta top"> 
+              <time class="meta-info" style="float:left;" datetime="2020-10-18"><i class="fa fa-calendar"></i><span class="lately">3 小时前</span></time>
+              
+              <a href="https://aurora-wangq.github.io/post/p4305-jloi2011bu-chong-fu-shu-zi/#comments" class="comments meta-info" title="">
+                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/p4305-jloi2011bu-chong-fu-shu-zi/"> </span>
+              </a>
+              <span id="/p4305-jloi2011bu-chong-fu-shu-zi/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
+              
+            </div>
+            <div class="info">
+              <div class="tags ">
+                
+                      <a href="https://aurora-wangq.github.io/tag/1GuW447lO/" class="ctag ctag-0 ctag-1GuW447lO" aria-label="">哈希</a>
+                    
+              </div>
+              <h1 class="title ularge white bold">P4305 [JLOI2011]不重复数字</h1>
+            </div>
+          </div>
+        </div>  
+
         <div class="epcl-page-wrapper">
-          <div class="left-content grid-70 np-mobile widget_epcl_related_articles">
+          <div class="left-content grid-70 np-mobile">
+            <article class="main-article post">
+              <section class="post-content">
+                <div class="text">
+                  <!-- more -->
+<p><strong>哈希</strong><br>
+思路 <strong><s>很简单</s></strong></p>
+<blockquote>
+<p>**1.**以二维vector为容器，第一维下标存储哈希值，第二维下标存储此哈希值下原数字的个数，数组值存储原数字。<br>
+**2.**输入一个数，找其对应哈希值下的数组内有没有和它相同的数字，相当于缩小了枚举的范围，因为原值相同的数哈希值一定相同，而不同的数哈希值也是可能相同的，所以要同时存储哈希值和原值。<br>
+**3.**如果没有重复的输出，有重复的不输出。<br>
+**4.**注意，由于是多组询问，每次都要把vector清零。</p>
+</blockquote>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cmath&gt;
+#include&lt;vector&gt;
+#define ll long long
+using namespace std;
 
-          <div class="widget_tag_cloud tagcloud">
-          
+const int mod=100007;
+const int maxn=5*1e5+7;
+vector&lt;int&gt; h[mod];
+int maxk,n,t;
+ll tong[mod]; 
+
+int hashe(int a) {return a=(a%mod+mod)%mod;}//哈希 
+
+int find(int val) {
+	
+	int hx=hashe(val);
+	maxk=max(maxk,hx);
+	
+	for(int i=0;i&lt;h[hx].size();i++) {
+		
+		if(h[hx][i]==val) return 0;
+	}
+	
+	h[hx].push_back(val);
+		
+	return 1;
+}//判重
+
+int main() {
+	
+	scanf(&quot;%d&quot;,&amp;t);
+	
+	int num,n;
+	
+	for(int i=1;i&lt;=t;i++) {
+		
+		scanf(&quot;%d&quot;,&amp;n);
+		
+		for(int p=0;p&lt;=maxk;p++) h[p].clear();//注意多次操作,要重新清零 
+		maxk=0;
+		
+		for(int j=1;j&lt;=n;j++) {
+			
+			scanf(&quot;%d&quot;,&amp;num);
+			
+			if(find(num)==1) printf(&quot;%d &quot;,num);  
+		}
+		
+		printf(&quot;\n&quot;);
+	}
+	return 0;
+} 
+</code></pre>
+<hr>
+<p>用vector的时候突发奇想试验了一下vector的原理结果发现<br>
+<img src="https://i.loli.net/2020/10/18/AauX1o6xbC2ZUsH.png" alt="c++" loading="lazy"><br>
+而更加鬼畜的是同样的代码在vscode中编译会报错，十分玄学。看来是<strong>Dev-Cpp</strong>的锅。</p>
+
+                </div>
+                <div class="clear"></div>
+              </section>
+            </article>
+            <div class="clear"></div>
+
+            <section class="related section">
+              
+              
+              <article class="next grid-50 tablet-grid-50 grid-parent">
+                <div class="thumb cover lazy loaded" style="background-image: url('https://aurora-wangq.github.io//post-images/2020-9-24.jpg');"></div>
+                 <a href="https://aurora-wangq.github.io/post/2020-9-24/" class="full-link"></a>
+                 <div class="info">
+                  <time datetime="2020-10-18">2020-10-18</time>
+                  <h4 class="title white no-margin">2020-9-24</h4>
+                </div>
+                 <span class="epcl-button red">
+                  <img src="https://aurora-wangq.github.io//media/images/right-arrow.svg" width="15" alt="Left Arrow">
+                </span>
+                <div class="overlay"></div>
+              </article>
+              
+
+                <div class="clear"></div>
+            </section>
+
+              <div class="clear"></div>
+              
             
-          
-          </div>
-        </div>
+              <div id="comments" class="bg-white hosted ">
+                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+              </div>
+              <div class="clear"></div>
+            
 
-        </div>
+            </div>
           </div>
-        </div>
       </main>
 
-        <footer id="footer" class="grid-container">
+          <footer id="footer" class="grid-container">
         <div class="widgets row gradient-effect">
             <div class="default-sidebar border-effect">
               <div class="grid-33 tablet-grid-50 mobile-grid-100">
@@ -244,6 +371,9 @@
     <div class="clear"></div>
 
         
+
+      
+    <script src="https://aurora-wangq.github.io//media/js/functions-post.js"></script>
 
     </div>
     <!-- end: #wrapper -->

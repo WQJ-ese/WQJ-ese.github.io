@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://aurora-wangq.github.io/</id>
     <title>Aurora</title>
-    <updated>2020-10-17T11:29:31.037Z</updated>
+    <updated>2020-10-18T06:23:27.561Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://aurora-wangq.github.io/"/>
     <link rel="self" href="https://aurora-wangq.github.io/atom.xml"/>
@@ -10,6 +10,776 @@
     <logo>https://aurora-wangq.github.io/images/avatar.png</logo>
     <icon>https://aurora-wangq.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Aurora</rights>
+    <entry>
+        <title type="html"><![CDATA[P4305 [JLOI2011]不重复数字]]></title>
+        <id>https://aurora-wangq.github.io/post/p4305-jloi2011bu-chong-fu-shu-zi/</id>
+        <link href="https://aurora-wangq.github.io/post/p4305-jloi2011bu-chong-fu-shu-zi/">
+        </link>
+        <updated>2020-10-18T03:42:22.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<p><strong>哈希</strong><br>
+思路 <strong><s>很简单</s></strong></p>
+<blockquote>
+<p>**1.**以二维vector为容器，第一维下标存储哈希值，第二维下标存储此哈希值下原数字的个数，数组值存储原数字。<br>
+**2.**输入一个数，找其对应哈希值下的数组内有没有和它相同的数字，相当于缩小了枚举的范围，因为原值相同的数哈希值一定相同，而不同的数哈希值也是可能相同的，所以要同时存储哈希值和原值。<br>
+**3.**如果没有重复的输出，有重复的不输出。<br>
+**4.**注意，由于是多组询问，每次都要把vector清零。</p>
+</blockquote>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cmath&gt;
+#include&lt;vector&gt;
+#define ll long long
+using namespace std;
+
+const int mod=100007;
+const int maxn=5*1e5+7;
+vector&lt;int&gt; h[mod];
+int maxk,n,t;
+ll tong[mod]; 
+
+int hashe(int a) {return a=(a%mod+mod)%mod;}//哈希 
+
+int find(int val) {
+	
+	int hx=hashe(val);
+	maxk=max(maxk,hx);
+	
+	for(int i=0;i&lt;h[hx].size();i++) {
+		
+		if(h[hx][i]==val) return 0;
+	}
+	
+	h[hx].push_back(val);
+		
+	return 1;
+}//判重
+
+int main() {
+	
+	scanf(&quot;%d&quot;,&amp;t);
+	
+	int num,n;
+	
+	for(int i=1;i&lt;=t;i++) {
+		
+		scanf(&quot;%d&quot;,&amp;n);
+		
+		for(int p=0;p&lt;=maxk;p++) h[p].clear();//注意多次操作,要重新清零 
+		maxk=0;
+		
+		for(int j=1;j&lt;=n;j++) {
+			
+			scanf(&quot;%d&quot;,&amp;num);
+			
+			if(find(num)==1) printf(&quot;%d &quot;,num);  
+		}
+		
+		printf(&quot;\n&quot;);
+	}
+	return 0;
+} 
+</code></pre>
+<hr>
+<p>用vector的时候突发奇想试验了一下vector的原理结果发现<br>
+<img src="https://i.loli.net/2020/10/18/AauX1o6xbC2ZUsH.png" alt="c++" loading="lazy"><br>
+而更加鬼畜的是同样的代码在vscode中编译会报错，十分玄学。看来是<strong>Dev-Cpp</strong>的锅。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020-9-24]]></title>
+        <id>https://aurora-wangq.github.io/post/2020-9-24/</id>
+        <link href="https://aurora-wangq.github.io/post/2020-9-24/">
+        </link>
+        <updated>2020-10-18T03:36:50.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<p>###T1[https://www.luogu.com.cn/problem/P1049</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+int f[20005],w[35];
+int main()
+{
+    int v,n;
+    cin&gt;&gt;v&gt;&gt;n;
+    for(int i=1;i&lt;=n;i++)cin&gt;&gt;w[i];
+    for(int i=1;i&lt;=n;i++)
+        for(int j=v;j&gt;=w[i];j--)
+            f[j]=max(f[j],f[j-w[i]]+w[i]);
+    cout&lt;&lt;v-f[v];
+    return 0;
+}
+</code></pre>
+<p>###T2[https://www.luogu.com.cn/problem/P1359]</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+
+const int maxn=202;
+int n,dis,f[maxn];
+
+int main() {
+
+    scanf(&quot;%d&quot;,&amp;n);
+
+    for(int i=1;i&lt;=n;i++)
+        for(int j=i+1;j&lt;=n;j++)
+        {
+            scanf(&quot;%d&quot;,&amp;dis);
+            if(f[j]==0 || f[i]+dis&lt;f[j]) f[j] = f[i]+dis;
+        }
+
+    printf(&quot;%d&quot;,f[n]);
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020-9-27]]></title>
+        <id>https://aurora-wangq.github.io/post/2020-9-27/</id>
+        <link href="https://aurora-wangq.github.io/post/2020-9-27/">
+        </link>
+        <updated>2020-10-18T03:33:56.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<p>###T1<a href="https://www.luogu.com.cn/problem/P1802">5倍经验日</a></p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#define ll long long
+using namespace std;
+
+ll n , v , lose[1002] , win[1002] , c[1002] , f[1002]; 
+
+int main() {
+
+    scanf(&quot;%lld%lld&quot;,&amp;n,&amp;v);
+
+    for(int i=1;i&lt;=n;i++) {
+
+        scanf(&quot;%lld%lld%lld&quot;,&amp;lose[i],&amp;win[i],&amp;c[i]);
+        // win[i]*=5;
+        // lose[i]*=5;
+    }
+
+
+       for (int i=1;i&lt;=n;i++){
+            for (int j=v;j&gt;=c[i];j--){
+                f[j]=max(f[j]+lose[i],f[j-c[i]]+win[i]);
+            }
+            for (int j=c[i]-1;j&gt;=0;j--){
+                f[j]+=lose[i];
+            } 
+        }
+
+    printf(&quot;%lld&quot;,5*f[v]);
+
+    return 0;
+}
+</code></pre>
+<p>###T2<a href="https://www.luogu.com.cn/problem/P1049">装箱</a></p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+
+int cap , n , v[20004];  
+int f[20004];
+
+int main() {
+
+    scanf(&quot;%d&quot;,&amp;cap);
+    scanf(&quot;%d&quot;,&amp;n);
+
+    for(int i=1;i&lt;=n;i++) {
+
+        scanf(&quot;%d&quot;,&amp;v[i]);
+    }
+
+    for(int i=1;i&lt;=n;i++) {
+
+        for(int j=cap;j&gt;=v[i];j--) {
+
+            if(j&gt;=v[i])
+            f[j]=max(f[j],f[j-v[i]]+v[i]);
+        }
+    }
+
+    printf(&quot;%d&quot;,cap-f[cap]);
+    return 0;
+}
+</code></pre>
+<p>###T2<a href="https://www.luogu.com.cn/problem/P1060">开心的金明</a></p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+
+int n,m;
+int v[30004],p[30004],f[30004];
+
+using namespace std;
+int main() {
+
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+
+    for(int i = 1;i&lt;=m;i ++) {
+
+        scanf(&quot;%d%d&quot;,&amp;v[i],&amp;p[i]);
+        p[i]*=v[i];
+    }
+
+
+    for(int i = 1;i&lt;=m;i ++) {
+
+        for(int j = n;j&gt;=v[i];j --) {
+
+            if(j&gt;=v[i] ) {
+
+                f[j]=max(f[j],f[j-v[i]]+p[i]);
+            }
+        }
+    }
+
+    printf(&quot;%d&quot;,f[n]);
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020-10-14]]></title>
+        <id>https://aurora-wangq.github.io/post/2020-10-14/</id>
+        <link href="https://aurora-wangq.github.io/post/2020-10-14/">
+        </link>
+        <updated>2020-10-18T03:32:15.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<h3 id="t1瑞瑞的木板">T1<a href="https://www.luogu.com.cn/problem/P1334">瑞瑞的木板</a></h3>
+<p><strong>可以手写小根堆</strong></p>
+<pre><code>int n,xl[10007];
+int ans,mina,minb;
+
+void init()  {
+
+    scanf(&quot;%d&quot;,&amp;n);
+
+    for(int i=1;i&lt;=n:i++)
+        scanf(&quot;%d&quot;,&amp;xl[i]);
+}
+
+void exchange(int a,int b) {
+
+    int tmp;
+    tmp=a;
+    a=b;
+    b=tmp;
+}
+
+void mintop(int xl[],int root) {
+
+    int l=root*2;
+    int r=root*2+1;
+    int small;
+
+    if(xl[l]&lt;xl[root]&amp;&amp;l&lt;=n)
+        small=l;
+
+    else small=root;
+
+    if(xl[r]&lt;xl[root]&amp;&amp;r&lt;=n)
+        small=r;
+
+    else small=root;
+
+    if(small!=root) {
+
+        exchange(xl[small],xl[root]);
+
+        mintop(xl,small);
+    }
+}
+
+void build(int xl[]) {
+
+    for(int i=n/2;i&gt;=12;i++)
+        mintop(xl,i);
+}
+</code></pre>
+<p><strong>或者直接STL</strong></p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;queue&gt;
+#define ll long long
+using namespace std;
+
+int n,x;
+ll ans;
+
+priority_queue&lt;int , vector&lt;int&gt; , greater&lt;int&gt; &gt; dui;
+
+int main() {
+
+    scanf(&quot;%d&quot;,&amp;n);
+
+    for(int i=1;i&lt;=n;i++) {
+
+        scanf(&quot;%d&quot;,&amp;x);
+
+        dui.push(x);
+    }
+
+    for(int i=1;i&lt;=n-1;i++) {
+
+        int a=dui.top();
+        dui.pop();
+        int b=dui.top();
+        dui.pop();
+        ans+=a+b;
+        dui.push(a+b);
+    }
+
+    printf(&quot;%lld&quot;,ans);
+
+    return 0;
+}
+</code></pre>
+<p><strong>大根堆</strong></p>
+<pre><code>#include&lt;iostream&gt;
+
+int heapsize;
+
+void maxh(int a[],int i)
+{
+
+    int l=2*i;
+    int r=2*i+1;
+    int largest;
+
+    if(l&lt;=heapsize&amp;&amp;a[l]&gt;a[i])
+        largest=l;
+
+    else 
+        largest=i;
+
+    if(r&lt;=heapsize&amp;&amp;a[r]&gt;a[largest])
+        largest=r;
+
+    if(largest!=i) {
+
+        int tmp=a[largest];
+        a[largest]=a[i];
+        a[i]=tmp;
+
+        maxh(a,largest);
+    }
+}
+
+void buildmaxh(int a[])
+{
+
+    int i;
+    for(int i = (int)(heapsize/2);i&gt;=1;i--) {
+
+        maxh(a,i);
+        for(int j=1;j&lt;=10;j++)
+            printf(&quot;%d &quot;,a[j]);
+        printf(&quot;\n&quot;);
+    }
+}
+
+void heapsort(int a[])
+{
+
+    buildmaxh(a);
+
+    int i;
+    int tmp;
+    for(int i=heapsize;i&gt;=2;i--) 
+    {
+
+        tmp=a[1]; 
+        a[1]=a[i];
+        a[i]=tmp;
+
+        heapsize--;
+        maxh(a,1);
+    }    
+}
+
+int main() {
+
+    int a[11] = { 0, 5, 3, 2, 1, 4, 6, 9, 7, 8, 10 };
+
+    int n = sizeof(a) / sizeof(int) - 1;
+
+    heapsize = n;
+
+    heapsort(a);
+
+    for(int i=1;i&lt;=n;i++)
+        printf(&quot;%d &quot;,a[i]);
+    return 0;
+}
+</code></pre>
+<h3 id="t2中位数">T2<a href="https://www.luogu.com.cn/problem/P1168">中位数</a></h3>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+
+const int maxn=1e5+7;
+int bit[maxn];
+int a[maxn],b[maxn];
+int n,all;
+
+inline int lowbit(int x)
+{
+    return x&amp;-x;
+}
+
+inline void add(int weizhi,int x)
+{
+
+    for(int i=weizhi;i&lt;=all;i+=lowbit(i))
+    bit[i]+=x;
+}
+
+int find(int k)
+{
+
+    int ans=0,now=0;
+
+    for(int i=20;i&gt;=0;i--) {
+
+        ans+=(1&lt;&lt;i);             
+        if(ans&gt;all||now+bit[ans]&gt;=k)ans-=(1&lt;&lt;i);
+        else now+=bit[ans]; 
+    }
+
+    return ans+1;
+}
+
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;n);
+
+    for(int i=1;i&lt;=n;i++) {
+
+        scanf(&quot;%d&quot;,&amp;a[++all]);
+        b[all]=a[all];
+    }
+
+    sort(a+1,a+1+n);
+
+    for(int i=1;i&lt;=n;i++)
+        b[i]=lower_bound(a+1,a+1+all,b[i])-a;
+
+    for(int i=1;i&lt;=n;i++) {
+
+        add(b[i],1);
+        if(i&amp;1)printf(&quot;%d\n&quot;,a[find((i+1)&gt;&gt;1)]);
+    }
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020-10-15]]></title>
+        <id>https://aurora-wangq.github.io/post/2020-10-15/</id>
+        <link href="https://aurora-wangq.github.io/post/2020-10-15/">
+        </link>
+        <updated>2020-10-18T03:30:30.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<h3 id="t1树状数组1">T1<a href="https://www.luogu.com.cn/problem/P3374">树状数组1</a></h3>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+
+int be[500004],tr[500004];
+int n,m,opt,x,y;
+
+int lowbit(int x) {
+
+    return x&amp;(-x);
+}
+
+void update(int pos,int w) {
+
+    while(pos&lt;=n) {
+
+        tr[pos]+=w;
+        pos+=lowbit(pos);
+    }
+} 
+
+int fsum(int pos) {
+
+    int ans=0;
+
+    while(pos&gt;0) {
+
+        ans+=tr[pos];
+        pos-=lowbit(pos);
+    }
+
+    return ans;
+}
+
+int main() {
+
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+
+    for(int i=1;i&lt;=n;i++) {
+
+        scanf(&quot;%d&quot;,&amp;be[i]);
+//cout&lt;&lt;&quot;21d12d&quot;&lt;&lt;endl;
+        update(i,be[i]);
+    }
+
+    for(int i=1;i&lt;=m;i++) {
+
+        scanf(&quot;%d&quot;,&amp;opt);
+
+        if(opt==1) {
+
+            scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
+
+            update(x,y);
+        }
+
+        else {
+
+            scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
+
+            printf(&quot;%d\n&quot;,fsum(y)-fsum(x-1));
+        }
+    }
+
+
+    return 0;
+}
+</code></pre>
+<h3 id="t2树状数组2">T2<a href="https://www.luogu.com.cn/problem/P3368">树状数组2</a></h3>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+
+int n,m,opt,x,y;
+long long k,tr[500001],zc;
+
+int lowbit(int a) {
+
+    return a&amp;(-a);
+}
+
+void updata(int pos,long long w) {
+
+    while(pos&lt;=n) {
+
+        tr[pos]+=w;
+
+        pos+=lowbit(pos);
+    }
+}
+
+long long fsum(int x) {
+
+    long long ans=0;
+
+    while(x&gt;0) {
+
+        ans+=tr[x];
+
+        x-=lowbit(x);
+    }
+
+    return ans;
+}
+
+int main() {
+
+    long long now=0;
+
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+
+    for(int i=1;i&lt;=n;i++) {
+
+        scanf(&quot;%lld&quot;,&amp;zc);
+        updata(i,zc-now);
+        now=zc;
+    }
+
+    for(int i=1;i&lt;=m;i++) {
+
+        scanf(&quot;%d&quot;,&amp;opt);
+
+        if(opt==1) {
+
+            scanf(&quot;%d%d%lld&quot;,&amp;x,&amp;y,&amp;k);
+
+            updata(x,k);
+            updata(y+1,-k);
+        }
+
+        else {
+
+            scanf(&quot;%d&quot;,&amp;x);
+
+            printf(&quot;%lld\n&quot;,fsum(x));
+        } 
+    }
+    return 0;
+}
+</code></pre>
+<p><strong>需要用到差分数组，顺便学习了一下</strong></p>
+<p><strong>附:</strong> 模板：</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+
+int be[500004],tr[500004];
+int n,m,opt,x,y;
+
+int lowbit(int x) {
+
+    return x&amp;(-x);
+}
+
+void update(int pos,int w) {
+
+    while(pos&lt;=n) {
+
+        tr[pos]+=w;
+        pos+=lowbit(pos);
+    }
+} 
+
+int fsum(int pos) {
+
+    int ans=0;
+
+    while(pos&gt;0) {
+
+        ans+=tr[pos];
+        pos-=lowbit(pos);
+    }
+
+    return ans;
+}
+
+int main() {
+
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+
+    for(int i=1;i&lt;=n;i++) {
+
+        scanf(&quot;%d&quot;,&amp;be[i]);
+
+        update(i,be[i]);
+    }
+
+    for(int i=1;i&lt;=m;i++) {
+
+        scanf(&quot;%d&quot;,&amp;opt);
+
+        if(opt==1) {
+
+            scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
+
+            update(x,y);
+        }
+
+        else {
+
+            scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
+
+            printf(&quot;%d\n&quot;,fsum(y)-fsum(x-1));
+        }
+    }
+
+
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020-10-17]]></title>
+        <id>https://aurora-wangq.github.io/post/zi-fu-chuan-ha-xi/</id>
+        <link href="https://aurora-wangq.github.io/post/zi-fu-chuan-ha-xi/">
+        </link>
+        <updated>2020-10-18T03:25:23.000Z</updated>
+        <content type="html"><![CDATA[<!-- more -->
+<p>###T1<a href="https://www.luogu.com.cn/problem/P3370">字符串哈希</a></p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#define ull unsigned long long
+using namespace std;
+
+ull base=131;
+ull a[10001];
+char s[10001];
+int n,ans=1;
+int prime=23333; 
+ull mod=1e9+7;
+
+ull hax(char s[])
+{
+
+ int len=strlen(s);
+ ull ans=0;
+ for (int i=0;i&lt;len;i++)
+ ans=(ans*base+(ull)s[i])%mod+prime;
+ return ans;
+}
+
+int main()
+{
+
+ scanf(&quot;%d&quot;,&amp;n);
+ for(int i=1;i&lt;=n;i++) {
+
+     scanf(&quot;%s&quot;,s);
+     a[i]=hax(s);
+}
+
+ sort(a+1,a+n+1);
+
+ for(int i=1;i&lt;n;i++) {
+
+     if(a[i]!=a[i+1])
+     ans++;
+ }
+
+ printf(&quot;%d&quot;,ans);
+ return 0;
+}
+</code></pre>
+<p>###T2<a href="http://csp.ac/problem/281">blocks</a></p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+
+int n;
+int a[100100];
+
+int main()
+{
+
+    scanf(&quot;%d&quot;,&amp;n);
+
+    int ans=-1;
+    for (int i = 1;i &lt;= n;i++) {
+
+        scanf(&quot;%d&quot;,&amp;a[i]);
+
+        if (i != 1)
+            ans=ans==-1?a[i-1]-a[i] : min(ans,a[i-1]-a[i]);    
+    }
+    printf(&quot;%d&quot;,ans);
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CSP-S2周末刷题班（第一场）]]></title>
         <id>https://aurora-wangq.github.io/post/csp-s2-zhou-mo-shua-ti-ban-di-yi-chang/</id>
