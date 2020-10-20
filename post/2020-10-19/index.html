@@ -35,7 +35,7 @@
 
 </head>
 <body>
-<div id="fh5co-offcanvas">
+    <div id="fh5co-offcanvas">
     <a href="#!" class="fh5co-close-offcanvas js-fh5co-close-offcanvas">
         <span><i class="icon-cross3"></i> <span>Close</span></span>
     </a>
@@ -159,121 +159,184 @@
 </header>
 
 
-<div class="container-fluid">
-    <div class="row fh5co-post-entry single-entry">
-        <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 animate-box">
+    <!--  <a href="#" class="fh5co-post-prev"><span>👈 Prev</span></a>-->
+    <!--  <a href="#" class="fh5co-post-next"><span>Next 👉</span></a>-->
 
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center content-article">
+    <!-- 等gridea出自定义页面功能再优化一下 -->
+    
+        <div class="container-fluid">
+    <div class="row fh5co-post-entry single-entry">
+        <article class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
+            <figure class="animate-box">
+                
+                    <img src="https://aurora-wangq.github.io//post-images/2020-10-19.jpeg" alt="2020-10-19" class="img-responsive">
+                
+            </figure>
+            <span class="fh5co-meta animate-box">
+                
+            </span>
+            <h2 class="fh5co-article-title animate-box">2020-10-19</h2>
+            <ol class="breadcrumb fh5co-meta fh5co-date animate-box" style="margin-bottom:0; background-color:#f8f9fa">
+                <li>2020-10-20</li>
+                <li>243字</li>
+                <li>2 min read</li>
+            </ol>
+
+            <div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-left content-article">
+                <div class="row">
+                    <div class="col-md-12 animate-box post-content">
+                        <p> <!-- more -->
+<h3 id="t1"><a href="https://www.luogu.com.cn/problem/P1280">T1</a></h3>
+<pre><code class="language-cpp">#include&lt;iostream&gt;  
+#include&lt;algorithm&gt;  
+using namespace std;
+
+long int n,k,sum[10001],num=1,f[10001];  
+long int i,j;
+
+struct nk   
+{  
+    long int ks,js;  
+};
+
+nk z[10001];
+
+int cmp(nk a,nk b) {
+
+    return a.ks&gt;b.ks;  
+}
+
+int main()  
+{  
+
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;k);
+
+    for(i=1;i&lt;=k;i++) {
+
+        cin&gt;&gt;z[i].ks&gt;&gt;z[i].js;    
+        sum[z[i].ks]++;  
+    }  
+
+    sort(z+1,z+k+1,cmp);  
+
+    for(i=n;i&gt;=1;i--)  
+    {  
+        if(sum[i]==0)  
+        f[i]=f[i+1]+1;  
+        else for(j=1;j&lt;=sum[i];j++)  
+        {  
+            if(f[i+z[num].js]&gt;f[i])  
+            f[i]=f[i+z[num].js];  
+            num++;
+        }  
+    }  
+    cout&lt;&lt;f[1]&lt;&lt;endl;  
+}
+</code></pre>
+<h3 id="t2"><a href="https://www.luogu.com.cn/problem/P1095">T2</a></h3>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cmath&gt;
+using namespace std;
+
+int m,s,t,dp[300001];
+
+int main() {
+
+    scanf(&quot;%d%d%d&quot;,&amp;m,&amp;s,&amp;t);
+
+    for(int i=1;i&lt;=t;i++) {
+
+        if(m&gt;=10) {
+
+            dp[i]=dp[i-1]+60;
+            m-=10;
+        }
+        else {
+
+            m+=4;
+            dp[i]=dp[i-1];    
+        }
+    }
+
+    for(int i=1;i&lt;=t;i++) {
+
+        dp[i]=max(dp[i],dp[i-1]+17);
+
+        if(dp[i]&gt;=s) {
+
+            printf(&quot;Yes\n%d&quot;,i);
+            return 0;    
+        }     
+    } 
+
+        printf(&quot;No\n%d&quot;,dp[t]);
+
+    return 0;
+}
+</code></pre>
+ </p>
+                    </div>
+                </div>
 
                 <div class="row">
-
-                    
-                    <h2 class="text-center archives-title">
-                        <i class="fa fa-archive"></i> 文章归档
-                    </h2>
-
-                    
-                    <div class="row post-group">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xs-offset-0 text-center post-year tag-title">
-                            <h3>2020</h3>
-                        </div>
-
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xs-offset-0 text-left">
-                            <ul class="post-list">
-                            
-                                
-                                <li class="post-item">
-                                    <a href="https://aurora-wangq.github.io/post/2020-10-19/" target="_blank">
-                                        <span class="post-title">2020-10-19</span>
-                                        <span class="post-day">2020-10-20</span>
-                                    </a>
-                                </li>
-                                
-                            
-                                
-                                <li class="post-item">
-                                    <a href="https://aurora-wangq.github.io/post/p4305-jloi2011bu-chong-fu-shu-zi/" target="_blank">
-                                        <span class="post-title">P4305 [JLOI2011]不重复数字</span>
-                                        <span class="post-day">2020-10-18</span>
-                                    </a>
-                                </li>
-                                
-                            
-                                
-                                <li class="post-item">
-                                    <a href="https://aurora-wangq.github.io/post/2020-9-24/" target="_blank">
-                                        <span class="post-title">2020-9-24</span>
-                                        <span class="post-day">2020-10-18</span>
-                                    </a>
-                                </li>
-                                
-                            
-                                
-                                <li class="post-item">
-                                    <a href="https://aurora-wangq.github.io/post/2020-9-27/" target="_blank">
-                                        <span class="post-title">2020-9-27</span>
-                                        <span class="post-day">2020-10-18</span>
-                                    </a>
-                                </li>
-                                
-                            
-                                
-                                <li class="post-item">
-                                    <a href="https://aurora-wangq.github.io/post/2020-10-14/" target="_blank">
-                                        <span class="post-title">2020-10-14</span>
-                                        <span class="post-day">2020-10-18</span>
-                                    </a>
-                                </li>
-                                
-                            
-                                
-                                <li class="post-item">
-                                    <a href="https://aurora-wangq.github.io/post/2020-10-15/" target="_blank">
-                                        <span class="post-title">2020-10-15</span>
-                                        <span class="post-day">2020-10-18</span>
-                                    </a>
-                                </li>
-                                
-                            
-                                
-                                <li class="post-item">
-                                    <a href="https://aurora-wangq.github.io/post/zi-fu-chuan-ha-xi/" target="_blank">
-                                        <span class="post-title">2020-10-17</span>
-                                        <span class="post-day">2020-10-18</span>
-                                    </a>
-                                </li>
-                                
-                            
-                                
-                                <li class="post-item">
-                                    <a href="https://aurora-wangq.github.io/post/csp-s2-zhou-mo-shua-ti-ban-di-yi-chang/" target="_blank">
-                                        <span class="post-title">CSP-S2周末刷题班（第一场）</span>
-                                        <span class="post-day">2020-10-17</span>
-                                    </a>
-                                </li>
-                                
-                            
-                                
-                                <li class="post-item">
-                                    <a href="https://aurora-wangq.github.io/post/mo-ban-da-gen-dui/" target="_blank">
-                                        <span class="post-title">[模板]大根堆</span>
-                                        <span class="post-day">2020-10-15</span>
-                                    </a>
-                                </li>
-                                
-                            
-                            </ul>
-                        </div>
+                    <div class="col-md-12 animate-box">
+                        
+                            <div class="next-post">
+                                <div class="next">下一篇</div>
+                                <a href="https://aurora-wangq.github.io/post/p4305-jloi2011bu-chong-fu-shu-zi/">
+                                    <h3 class="post-title">
+                                        P4305 [JLOI2011]不重复数字
+                                    </h3>
+                                </a>
+                            </div>
+                        
                     </div>
-                    
-
                 </div>
-            </div>
-        </div>
+
+                <div class="row">
+    <div class="col-md-12 animate-box">
+        
     </div>
 </div>
 
+            </div>
 
+        </article>
+    </div>
+</div>
+
+    
+
+    <!-- 返回顶部 -->
+    <div class="back-to-top">
+    
+        <a href="#!" id="tool-toc" class="hidden-xs hidden-sm">
+            <i class="fa fa-map"></i>
+        </a>
+        <br>
+    
+    <a href="#top" class="hidden-xs hidden-sm"><i class="fa fa-paper-plane"></i></a>
+</div>
+
+<div class="post-toc animated fadeInRight hidden-xs hidden-sm" style="display: none;">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#t1">T1</a></li>
+<li><a href="#t2">T2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+
+    
 <footer id="fh5co-footer">
   <p><!doctype html>
 <html>
@@ -905,7 +968,7 @@ a {
 </footer>
 
 
-<!-- jQuery -->
+    <!-- jQuery -->
 <script src="https://aurora-wangq.github.io//media/scripts/jquery.min.js"></script>
 <!-- img lazy load -->
 <script src="https://aurora-wangq.github.io//media/scripts/jquery.lazyload.min.js"></script>
