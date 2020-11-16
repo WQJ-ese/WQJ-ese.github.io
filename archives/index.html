@@ -24,6 +24,90 @@
 
 
     
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="https://WQJ-ese.github.io"
+                    style="font-size:21px">zhdexs&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                <a class="navbar-brand" href=""
+                    style="font-size:15px;font-family:kaiti">zhdexs</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse">
+                
+                <div class="search nav navbar-nav" style="margin-top:8px">
+                    <!-- <input type="text" class="search-input" placeholder="标题搜索(●'◡'●)" /> -->
+                    <input type="text" class="search-input" placeholder="标题搜索 ⚆_⚆ つ♡">
+                    <div class="search-results"></div>
+                </div>
+                
+                <div class="search nav navbar-nav searchtop">
+                <a title="text" onclick="document.getElementById('socialMenu').style.display='block'"><i><img class="social"
+                    src="https://WQJ-ese.github.io/media/images/social.png" alt=""></i></a>
+            </div>
+            <ul class="nav navbar-nav" style="float: right;margin-right:5%">
+                
+                
+                <li>
+                    <a href="/" style="color:white">
+                        首页
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/archives" style="color:white">
+                        创作历程
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/post/about" style="color:white">
+                        关于zh
+                    </a>
+                </li>
+                
+                
+                
+                  
+                <li><a href="https://WQJ-ese.github.io/friends" style="color:white">友链</a></li>
+                
+                  <li><img src="https://WQJ-ese.github.io/images/avatar.png?v=1605531775912" alt=""
+                class="menutopavatar"></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div id="socialMenu">
+        <div class="animate">
+            <div class="socialContainer">
+                
+                
+                
+                
+                
+                
+            </div>
+            <div id="qq" style="display:none"></div>
+        </div>
+    </div>
+    <!-- 引入jQuery核心js文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script>
+        var social = document.getElementById('socialMenu');
+        // 鼠标点击模型外区域关闭登录框
+        window.onclick = function (event) {
+            if (event.target == social) {
+                social.style.display = "none";
+            }
+        }
+    </script>
+    
 </body>
 <script>
     //-------------------------------------------------搜索
@@ -294,6 +378,9 @@
           
           
           
+          
+          <li><a href="https://WQJ-ese.github.io/friends">友链</a></li>
+
           
         </ul>
       </div><!-- /.navbar-collapse -->
