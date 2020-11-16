@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://WQJ-ese.github.io</id>
-    <title>Aurora</title>
-    <updated>2020-11-16T12:59:24.580Z</updated>
+    <title>zhdexs</title>
+    <updated>2020-11-16T13:01:12.738Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://WQJ-ese.github.io"/>
     <link rel="self" href="https://WQJ-ese.github.io/atom.xml"/>
-    <subtitle>WQJ_MKTB</subtitle>
+    <subtitle>zhdexs</subtitle>
     <logo>https://WQJ-ese.github.io/images/avatar.png</logo>
     <icon>https://WQJ-ese.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Aurora</rights>
+    <rights>All rights reserved 2020, zhdexs</rights>
 </feed>
